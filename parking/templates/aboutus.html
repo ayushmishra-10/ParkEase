@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: burlywood;
+            color: black;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 40;
+            animation: fadeInDown 0.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            padding: 15px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav a:hover {
+            background-color: #555;
+            color: #fff;
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: justify;
+            animation: fadeIn 1s ease; /* Fade-in animation */
+        }
+
+        .container h1, .container h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease; /* Slide-in animation */
+        }
+
+        .container p {
+            margin-bottom: 20px;
+            animation: fadeInLeft 1s ease; /* Fade-in animation */
+        }
+
+        .container p:last-child {
+            margin-bottom: 0;
+        }
+
+        .fancy-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 20px;
+            color: #00bcd4;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a class="active" href="/">Home</a>
+    <a href="/fare">Fare</a>
+    <a href="/contactus">Contact us</a>
+    <a href="/complaint">Complaint</a>
+    <a href="/signup/">SignUp</a>
+</div>
+<div class="container">
+    <h1 class="fancy-text">Welcome to ParkEase</h1>
+    <div class="quote">"Revolutionizing Parking Management"</div>
+    <h2 class="fancy-text">Our Innovative Approach:</h2>
+    <p>We at ParkEase are committed to revolutionizing the way parking management is handled. By utilizing cutting-edge technologies such as machine learning and IoT (Internet of Things), we provide a seamless and hassle-free parking experience for both vehicle owners and parking lot operators.</p>
+    <p>Our <span class="highlight">Smart Parking System</span> intelligently monitors parking space availability in real-time, guiding drivers to the nearest vacant spot and minimizing congestion. With our user-friendly mobile app, users can easily locate parking, make reservations, and pay securely, all from the palm of their hand.</p>
+    <h2 class="fancy-text">Our Vision:</h2>
+    <p>We envision a future where parking is no longer a source of frustration, but a seamless and efficient process that enhances urban mobility. By leveraging technology and innovation, we strive to create smarter, greener, and more connected cities for generations to come.</p>
+</div>
+</body>
+</html>

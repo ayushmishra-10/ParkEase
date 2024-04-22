@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Exit Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        .bg-heading {
+            text-align: center;
+        }
+
+        .bg-text {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .btn-print {
+            display: block;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        @media screen and (max-width: 600px) {
+            .bg-text {
+                padding: 10px;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .car {
+            position: relative;
+            width: 100px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 20px auto;
+            animation: moveOut 2s ease-in-out;
+        }
+
+        @keyframes moveOut {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        .vehicle-box {
+            display: inline-block;
+            width: 100px;
+            height: 60px;
+            background-color: #ccc;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vehicle-box:hover {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="bg-heading">
+        <h1>Vehicle Exit</h1>
+    </div>
+
+    <div class="bg-text">
+        <div id="vehicle-list">
+            {% for vehicle in vehicles %}
+                <div class="vehicle-box" data-vno="{{ vehicle.vno }}">{{ vehicle.vno }}</div>
+            {% endfor %}
+        </div>
+        <br>
+        <form id="exit-form" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="selected-vehicle" name="vno">
+            <input type="text" name="tno" placeholder="Enter Tag ID">
+            <input type="submit" value="Exit Vehicle">
+        </form>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.vehicle-box').forEach(box => {
+        box.addEventListener('click', () => {
+            document.getElementById('selected-vehicle').value = box.dataset.vno;
+            document.querySelectorAll('.vehicle-box').forEach(b => {
+                b.style.backgroundColor = '#ccc';
+            });
+            box.style.backgroundColor = '#f00';
+        });
+    });
+</script>
+</body>
+</html>

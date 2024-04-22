@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #1E90FF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .vehicle-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        b {
+            color: #333;
+        }
+
+        p {
+            margin: 0;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<form method="GET" action=" ">
+    {% csrf_token %}
+    <input type="text" name="search" placeholder="Search vehicles">
+    <input type="submit" value="Search">
+</form>
+
+{% if obj %}
+    <div class="vehicle-details">
+        <p><b>Vehicle no:</b> {{ obj.vnumber }}</p>
+        <p><b>Vehicle type:</b> {{ obj.vtype }}</p>
+        <p><b>Contact no:</b> {{ obj.contactno }}</p>
+    </div>
+{% endif %}
+</body>
+</html>

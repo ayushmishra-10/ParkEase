@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact us list</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a.active {
+            background-color: #1E90FF;
+            color: white;
+        }
+
+        /* Main content */
+        .bg-heading {
+            background-color: #1E90FF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bg-text {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topnav">
+    <a class="active" href="/adminpage/">Go to Admin</a>
+    <div class="toplg">Admin view is active</div>
+</div>
+
+<div class="bg-heading">
+    <h1>Who wants to Contact - list</h1>
+</div>
+
+<div class="bg-text">
+    {% if obj %}
+        <table>
+            <tr>
+                <th>ID of user</th>
+                <th>Name of user</th>
+                <th>Email address</th>
+                <th>Contact Number</th>
+                <th>Query</th>
+            </tr>
+            {% for k in obj %}
+                <tr>
+                    <td>{{ k.id }}</td>
+                    <td>{{ k.name }}</td>
+                    <td>{{ k.mail }}</td>
+                    <td>{{ k.contactno }}</td>
+                    <td>{{ k.question }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+
+<script>
+    // Fade in animation for the main content
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.bg-text').style.animation = 'fadeIn 1s ease-in-out';
+    });
+</script>
+</body>
+</html>

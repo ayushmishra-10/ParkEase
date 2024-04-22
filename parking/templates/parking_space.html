@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Space Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        .parking-space {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #333;
+            position: relative;
+            background-color: #ddd;
+        }
+
+        .car {
+            width: 80px;
+            height: 40px;
+            background-color: #3498db;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            transition: left 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="parking-space">
+        <div class="car"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parkingSpace = document.querySelector(".parking-space");
+            const car = document.querySelector(".car");
+            const moveCarButton = document.createElement("button");
+            moveCarButton.textContent = "Move Car";
+            moveCarButton.addEventListener("click", function () {
+                const currentPosition = parseInt(car.style.left) || 10;
+                const newPosition = currentPosition === 10 ? 310 : 10; // Toggle between start and end positions
+                car.style.left = newPosition + "px";
+            });
+            parkingSpace.appendChild(moveCarButton);
+        });
+    </script>
+</body>
+</html>

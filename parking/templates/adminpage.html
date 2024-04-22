@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Admin Dashboard</title>
+    <style>
+        /* General Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0099ff 0%, #ff99cc 100%);
+            font-weight: 100;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Container Styles */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .container h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        /* Button Styles */
+        .button {
+            background-color: #1E90FF;
+            border: none;
+            color: #fff;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 30px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0077b6;
+            transform: scale(1.05);
+        }
+
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.6s;
+            border-radius: 50%;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        .button:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        /* Navigation Bar Styles */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .topnav a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #778899;
+        }
+
+        .topnav a.active {
+            background-color: #1E90FF;
+        }
+
+        .topright {
+            position: absolute;
+            top: 8px;
+            right: 16px;
+        }
+
+        .topright img {
+            width: 180px;
+            height: auto;
+        }
+
+        .toplg {
+            position: absolute;
+            top: 10px;
+            right: 220px;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/maps">Map</a>
+    <a href="/fare">Fare</a>
+    <a href="/index/">Logout</a>
+    <div class="toplg">Admin view is active</div>
+</div>
+
+<!-- Content Container -->
+<div class="container">
+    <h2>Welcome Admin!!</h2>
+    <form action="/printcomplaint/">
+        <button class="button">View Complaints</button><br><br>
+    </form>
+    <form action="/printcontact/">
+        <button class="button">View Contact</button><br><br>
+    </form>
+    <form action="/printvehicles/">
+        <button class="button">Vehicles List</button><br><br>
+    </form>
+    <br><br><br>
+    <h4>This page is Admin only. Please logout if not in use.</h4>
+</div>
+
+</body>
+</html>

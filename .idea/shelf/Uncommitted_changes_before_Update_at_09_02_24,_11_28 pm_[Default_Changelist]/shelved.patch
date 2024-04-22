@@ -1,0 +1,477 @@
+Index: parking/templates/printcomplaint.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Print Entry Details</title>\n    <style>\n        body, html {\n            height: 100%;\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n        }\n\n        .bg-image {\n            background-image: url(\"http://www.bathcityfc.com/wp-content/uploads/2017/11/Print.jpg\");\n            filter: blur(8px);\n            -webkit-filter: blur(8px);\n            height: 100%;\n            background-position: center;\n            background-repeat: no-repeat;\n            background-size: cover;\n        }\n\n        .bg-heading {\n            font-family: Verlag, museo-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;\n            position: absolute;\n            top: 10%;\n            left: 50%;\n            transform: translateX(-50%);\n            z-index: 2;\n            width: 100%;\n            text-align: center;\n        }\n\n        .bg-text {\n            border-radius: 20px;\n            background-color: rgba(128, 128, 128, 0.8);\n            font-family: \"Helvetica\", Times, serif;\n            color: black;\n            position: absolute;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            z-index: 2;\n            width: 70%;\n            padding: 20px;\n            text-align: center;\n        }\n\n        body {\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n        }\n\n        .topnav {\n            overflow: hidden;\n            background-color: #333;\n            position: fixed;\n            width: 100%;\n            top: 0;\n            left: 0;\n        }\n\n        .topnav a {\n            float: left;\n            color: #f2f2f2;\n            text-align: center;\n            padding: 14px 16px;\n            text-decoration: none;\n            font-size: 17px;\n        }\n\n        .topnav a:hover {\n            background-color: #778899;\n            color: black;\n        }\n\n        .topnav a.active {\n            background-color: #1E90FF;\n            color: white;\n        }\n\n        .topright {\n            position: absolute;\n            top: 6px;\n            right: 10px;\n            font-size: 1px;\n        }\n\n        .toplg {\n            position: absolute;\n            top: 10px;\n            right: 260px;\n            font-size: 20px;\n            color: white;\n        }\n\n        table {\n            width: 100%;\n            border-collapse: collapse;\n            overflow: hidden;\n            box-shadow: 0 0 90px rgba(0, 0, 0, 0.7);\n        }\n\n        th,\n        td {\n            padding: 15px;\n            background-color: rgba(255, 255, 255, 0.2);\n            border: 1px solid black;\n            color: #FFFFE0;\n            font-size: 20px;\n            text-align: center;\n        }\n\n        th {\n            background-color: rgba(255, 255, 255, 0.4);\n        }\n\n        tbody tr:hover {\n            background-color: rgba(255, 255, 255, 0.3);\n        }\n\n        td:hover {\n            position: relative;\n            &:before {\n                content: \"\";\n                position: absolute;\n                left: 0;\n                right: 0;\n                top: -9999px;\n                bottom: -9999px;\n                background-color: rgba(255, 255, 255, 0.2);\n                z-index: -1;\n            }\n        }\n    </style>\n</head>\n<body>\n<div class=\"topnav\">\n    <a class=\"active\" href=\"/adminpage/\">Go to Admin</a>\n    <div class=\"toplg\">Admin view is active</div>\n    <div class=\"topright\"><img src=\"https://i.ibb.co/SsDM6pc/securepark.png\" width=\"210\" height=\"40\"></div>\n</div>\n\n<div class=\"bg-image\"></div>\n<div class=\"bg-heading\">\n    <h1>Registered Complaints</h1>\n</div>\n<div class=\"bg-text\">\n    <table>\n        <tbody>\n        {% if obj %}\n            {% for k in obj %}\n                <tr>\n                    <td>Name of user:</td>\n                    <td>{{ k.fname }} {{ k.mname }} {{ k.lname }}</td>\n                </tr>\n                <tr>\n                    <td>Email address:</td>\n                    <td>{{ k.email }}</td>\n                </tr>\n                <tr>\n                    <td>Contact Number:</td>\n                    <td>{{ k.contactno }}</td>\n                </tr>\n                <tr>\n                    <td>Address of user:</td>\n                    <td>{{ k.address }}</td>\n                </tr>\n                <tr>\n                    <td>Complaint type:</td>\n                    <td>{{ k.space }}</td>\n                </tr>\n                <tr>\n                    <td>Message:</td>\n                    <td>{{ k.message }}</td>\n                </tr>\n                <tr>\n                    <td colspan=\"2\"><hr></td>\n                </tr>\n            {% endfor %}\n        {% endif %}\n        </tbody>\n    </table>\n</div>\n</body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/parking/templates/printcomplaint.html b/parking/templates/printcomplaint.html
+--- a/parking/templates/printcomplaint.html	(revision 4ba32ca484ebd737116e2016834207d2f6d0cda7)
++++ b/parking/templates/printcomplaint.html	(date 1707501394991)
+@@ -2,67 +2,28 @@
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+-    <title>Print Entry Details</title>
++    <title>Complaint Details</title>
+     <style>
+-        body, html {
+-            height: 100%;
+-            margin: 0;
+-            font-family: Arial, Helvetica, sans-serif;
+-        }
+-
+-        .bg-image {
+-            background-image: url("http://www.bathcityfc.com/wp-content/uploads/2017/11/Print.jpg");
+-            filter: blur(8px);
+-            -webkit-filter: blur(8px);
+-            height: 100%;
+-            background-position: center;
+-            background-repeat: no-repeat;
+-            background-size: cover;
+-        }
+-
+-        .bg-heading {
+-            font-family: Verlag, museo-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+-            position: absolute;
+-            top: 10%;
+-            left: 50%;
+-            transform: translateX(-50%);
+-            z-index: 2;
+-            width: 100%;
+-            text-align: center;
+-        }
+-
+-        .bg-text {
+-            border-radius: 20px;
+-            background-color: rgba(128, 128, 128, 0.8);
+-            font-family: "Helvetica", Times, serif;
+-            color: black;
+-            position: absolute;
+-            top: 50%;
+-            left: 50%;
+-            transform: translate(-50%, -50%);
+-            z-index: 2;
+-            width: 70%;
+-            padding: 20px;
+-            text-align: center;
+-        }
+-
+         body {
++            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             margin: 0;
+-            font-family: Arial, Helvetica, sans-serif;
++            padding: 0;
++            background-color: #f0f0f0;
++            color: #333;
+         }
+ 
+         .topnav {
++            background-color: #1E90FF;
+             overflow: hidden;
+-            background-color: #333;
+             position: fixed;
+             width: 100%;
+             top: 0;
+-            left: 0;
++            z-index: 1000;
+         }
+ 
+         .topnav a {
+             float: left;
+-            color: #f2f2f2;
++            color: #fff;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+@@ -70,114 +31,95 @@
+         }
+ 
+         .topnav a:hover {
+-            background-color: #778899;
+-            color: black;
++            background-color: #36b7f9;
+         }
+ 
+         .topnav a.active {
+-            background-color: #1E90FF;
+-            color: white;
++            background-color: #0d6efd;
++        }
++
++        .brand-logo {
++            float: left;
++            margin-left: 20px;
++            margin-top: 8px;
++            font-size: 24px;
++            font-weight: bold;
++            color: #fff;
+         }
+ 
+-        .topright {
+-            position: absolute;
+-            top: 6px;
+-            right: 10px;
+-            font-size: 1px;
++        .content {
++            margin-top: 70px;
++            padding: 20px;
+         }
+ 
+-        .toplg {
+-            position: absolute;
+-            top: 10px;
+-            right: 260px;
+-            font-size: 20px;
+-            color: white;
++        .complaint-heading {
++            text-align: center;
++            font-size: 36px;
++            margin-bottom: 30px;
+         }
+ 
+         table {
+             width: 100%;
+             border-collapse: collapse;
+-            overflow: hidden;
+-            box-shadow: 0 0 90px rgba(0, 0, 0, 0.7);
++            margin-top: 20px;
++            background-color: #fff;
+         }
+ 
+-        th,
+-        td {
+-            padding: 15px;
+-            background-color: rgba(255, 255, 255, 0.2);
+-            border: 1px solid black;
+-            color: #FFFFE0;
+-            font-size: 20px;
+-            text-align: center;
++        th, td {
++            border: 1px solid #ddd;
++            padding: 12px;
++            text-align: left;
+         }
+ 
+         th {
+-            background-color: rgba(255, 255, 255, 0.4);
++            background-color: #1E90FF;
++            color: #fff;
+         }
+ 
+-        tbody tr:hover {
+-            background-color: rgba(255, 255, 255, 0.3);
++        tr:nth-child(even) {
++            background-color: #f2f2f2;
+         }
+ 
+-        td:hover {
+-            position: relative;
+-            &:before {
+-                content: "";
+-                position: absolute;
+-                left: 0;
+-                right: 0;
+-                top: -9999px;
+-                bottom: -9999px;
+-                background-color: rgba(255, 255, 255, 0.2);
+-                z-index: -1;
+-            }
++        tr:hover {
++            background-color: #ddd;
+         }
+     </style>
+ </head>
+ <body>
+ <div class="topnav">
+-    <a class="active" href="/adminpage/">Go to Admin</a>
+-    <div class="toplg">Admin view is active</div>
+-    <div class="topright"><img src="https://i.ibb.co/SsDM6pc/securepark.png" width="210" height="40"></div>
+-</div>
+-
+-<div class="bg-image"></div>
+-<div class="bg-heading">
+-    <h1>Registered Complaints</h1>
++    <div class="brand-logo">Parking Manager</div>
++    <a href="/adminpage/" class="active">Admin View</a>
+ </div>
+-<div class="bg-text">
++
++<div class="content">
++    <h1 class="complaint-heading">Registered Complaints</h1>
+     <table>
+-        <tbody>
+-        {% if obj %}
+-            {% for k in obj %}
+-                <tr>
+-                    <td>Name of user:</td>
+-                    <td>{{ k.fname }} {{ k.mname }} {{ k.lname }}</td>
+-                </tr>
+-                <tr>
+-                    <td>Email address:</td>
+-                    <td>{{ k.email }}</td>
+-                </tr>
+-                <tr>
+-                    <td>Contact Number:</td>
+-                    <td>{{ k.contactno }}</td>
+-                </tr>
+-                <tr>
+-                    <td>Address of user:</td>
+-                    <td>{{ k.address }}</td>
+-                </tr>
++        <thead>
++        <tr>
++            <th>Name of User</th>
++            <th>Email Address</th>
++            <th>Contact Number</th>
++            <th>Address</th>
++            <th>Complaint Type</th>
++            <th>Message</th>
++        </tr>
++        </thead>
++        <tbody>
++        {% if obj %}
++            {% for complaint in obj %}
+                 <tr>
+-                    <td>Complaint type:</td>
+-                    <td>{{ k.space }}</td>
++                    <td>{{ complaint.fname }} {{ complaint.mname }} {{ complaint.lname }}</td>
++                    <td>{{ complaint.email }}</td>
++                    <td>{{ complaint.contactno }}</td>
++                    <td>{{ complaint.address }}</td>
++                    <td>{{ complaint.space }}</td>
++                    <td>{{ complaint.message }}</td>
+                 </tr>
+-                <tr>
+-                    <td>Message:</td>
+-                    <td>{{ k.message }}</td>
+-                </tr>
+-                <tr>
+-                    <td colspan="2"><hr></td>
+-                </tr>
+-            {% endfor %}
++            {% endfor %}
++        {% else %}
++            <tr>
++                <td colspan="6">No complaints registered.</td>
++            </tr>
+         {% endif %}
+         </tbody>
+     </table>
+Index: parking/templates/adminpage.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html>\n<head>\n    <style>\n        html, body {\n            height: 100%;\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n            background: linear-gradient(45deg, #49a09d 0%, #5f2c82 100%);\n            font-weight: 100;\n        }\n\n        .container {\n            position: absolute;\n            top: 45%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            text-align: center;\n        }\n\n        .text h1 {\n            font-size: 32px;\n            color: #fff;\n            font-weight: bold;\n            margin-top: 120px;\n            padding-bottom: 30px;\n            font-family: cursive;\n            font-size: 70px;\n        }\n\n        /* Navigation Bar */\n        .topnav {\n            overflow: hidden;\n            background-color: #333;\n            position: fixed;\n            width: 100%;\n            top: 0;\n            left: 0;\n        }\n\n        .topnav a {\n            float: left;\n            color: #f2f2f2;\n            text-align: center;\n            padding: 14px 16px;\n            text-decoration: none;\n            font-size: 17px;\n        }\n\n        .topnav a:hover {\n            background-color: #778899;\n            color: black;\n        }\n\n        .topnav a.active {\n            background-color: #1E90FF;\n            color: white;\n        }\n\n        .topright {\n            position: absolute;\n            top: 1px;\n            right: 10px;\n            font-size: 1px;\n        }\n\n        .toplg {\n            position: absolute;\n            top: 10px;\n            right: 260px;\n            font-size: 20px;\n            color: white;\n        }\n\n        .button {\n            background-color: transparent;\n            border: groove;\n            color: white;\n            padding: 15px 32px;\n            text-align: center;\n            text-decoration: none;\n            display: inline-block;\n            font-size: 16px;\n            margin: 4px 2px;\n            cursor: pointer;\n            border-radius: 12px;\n            transition-duration: 0.4s;\n        }\n\n        .button:hover {\n            background-color: #333;\n        }\n    </style>\n</head>\n<body>\n\n<div class=\"topnav\">\n    <a class=\"active\" href=\"/\">Home</a>\n    <a href=\"/maps\">Map</a>\n    <a href=\"/fare\">Fare</a>\n    <a href=\"/index/\">Logout</a>\n    <div class=\"toplg\">Admin view is active</div>\n    <div class=\"topright\"><img src=\"https://i.ibb.co/SsDM6pc/securepark.png\" width=\"210\" height=\"45\"></div>\n</div>\n\n<div class=\"container\">\n    <h2 style=\"color:white;\">Welcome Admin!!</h2>\n\n    <form action=\"/printcomplaint/\">\n        <button class=\"button\" style=\"margin-top: 50px;\">View Complaints</button><br><br>\n    </form>\n    <form action=\"/printcontact/\">\n        <button class=\"button\" style=\"margin-top: 50px;\">View Contact</button><br><br>\n    </form>\n    <form action=\"/printvehicles/\">\n        <button class=\"button\" style=\"margin-top: 50px;\">Vehicles List</button><br><br>\n    </form>\n    <br><br><br>\n    <h4 style=\"color:white;\">This page is Admin only. Please logout if not in use.</h4>\n</div>\n\n</body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/parking/templates/adminpage.html b/parking/templates/adminpage.html
+--- a/parking/templates/adminpage.html	(revision 4ba32ca484ebd737116e2016834207d2f6d0cda7)
++++ b/parking/templates/adminpage.html	(date 1707501493219)
+@@ -5,27 +5,44 @@
+         html, body {
+             height: 100%;
+             margin: 0;
+-            font-family: Arial, Helvetica, sans-serif;
+-            background: linear-gradient(45deg, #49a09d 0%, #5f2c82 100%);
++            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
++            background: linear-gradient(135deg, #0099ff 0%, #ff99cc 100%);
+             font-weight: 100;
+         }
+ 
+         .container {
+             position: absolute;
+-            top: 45%;
++            top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             text-align: center;
++            color: #fff;
+         }
+ 
+-        .text h1 {
++        .container h2 {
+             font-size: 32px;
++            font-weight: bold;
++            margin-top: 40px;
++        }
++
++        .button {
++            background-color: #1E90FF;
++            border: none;
+             color: #fff;
+-            font-weight: bold;
+-            margin-top: 120px;
+-            padding-bottom: 30px;
+-            font-family: cursive;
+-            font-size: 70px;
++            padding: 15px 32px;
++            text-align: center;
++            text-decoration: none;
++            display: inline-block;
++            font-size: 16px;
++            margin-top: 30px;
++            cursor: pointer;
++            border-radius: 12px;
++            transition-duration: 0.4s;
++            outline: none;
++        }
++
++        .button:hover {
++            background-color: #0077b6;
+         }
+ 
+         /* Navigation Bar */
+@@ -36,11 +53,12 @@
+             width: 100%;
+             top: 0;
+             left: 0;
++            z-index: 1000;
+         }
+ 
+         .topnav a {
+             float: left;
+-            color: #f2f2f2;
++            color: #fff;
+             text-align: center;
+             padding: 14px 16px;
+             text-decoration: none;
+@@ -49,47 +67,30 @@
+ 
+         .topnav a:hover {
+             background-color: #778899;
+-            color: black;
+         }
+ 
+         .topnav a.active {
+             background-color: #1E90FF;
+-            color: white;
+         }
+ 
+         .topright {
+             position: absolute;
+-            top: 1px;
+-            right: 10px;
+-            font-size: 1px;
++            top: 8px;
++            right: 16px;
++        }
++
++        .topright img {
++            width: 180px;
++            height: auto;
+         }
+ 
+         .toplg {
+             position: absolute;
+             top: 10px;
+-            right: 260px;
++            right: 220px;
+             font-size: 20px;
+             color: white;
+         }
+-
+-        .button {
+-            background-color: transparent;
+-            border: groove;
+-            color: white;
+-            padding: 15px 32px;
+-            text-align: center;
+-            text-decoration: none;
+-            display: inline-block;
+-            font-size: 16px;
+-            margin: 4px 2px;
+-            cursor: pointer;
+-            border-radius: 12px;
+-            transition-duration: 0.4s;
+-        }
+-
+-        .button:hover {
+-            background-color: #333;
+-        }
+     </style>
+ </head>
+ <body>
+@@ -100,23 +101,23 @@
+     <a href="/fare">Fare</a>
+     <a href="/index/">Logout</a>
+     <div class="toplg">Admin view is active</div>
+-    <div class="topright"><img src="https://i.ibb.co/SsDM6pc/securepark.png" width="210" height="45"></div>
++
+ </div>
+ 
+ <div class="container">
+-    <h2 style="color:white;">Welcome Admin!!</h2>
++    <h2>Welcome Admin!!</h2>
+ 
+     <form action="/printcomplaint/">
+-        <button class="button" style="margin-top: 50px;">View Complaints</button><br><br>
++        <button class="button">View Complaints</button><br><br>
+     </form>
+     <form action="/printcontact/">
+-        <button class="button" style="margin-top: 50px;">View Contact</button><br><br>
++        <button class="button">View Contact</button><br><br>
+     </form>
+     <form action="/printvehicles/">
+-        <button class="button" style="margin-top: 50px;">Vehicles List</button><br><br>
++        <button class="button">Vehicles List</button><br><br>
+     </form>
+     <br><br><br>
+-    <h4 style="color:white;">This page is Admin only. Please logout if not in use.</h4>
++    <h4>This page is Admin only. Please logout if not in use.</h4>
+ </div>
+ 
+ </body>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"94025f6e-11a1-4e46-a82f-2690b2b79fd2\" name=\"Default Changelist\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileEditorManager\">\n    <leaf SIDE_TABS_SIZE_LIMIT_KEY=\"300\">\n      <file pinned=\"false\" current-in-tab=\"false\">\n        <entry file=\"file://$PROJECT_DIR$/parking/views.py\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state relative-caret-position=\"725\">\n              <caret line=\"299\" column=\"61\" selection-start-line=\"299\" selection-start-column=\"61\" selection-end-line=\"299\" selection-end-column=\"61\" />\n              <folding>\n                <element signature=\"e#0#18#0\" expanded=\"true\" />\n              </folding>\n            </state>\n          </provider>\n        </entry>\n      </file>\n      <file pinned=\"false\" current-in-tab=\"true\">\n        <entry file=\"file://$PROJECT_DIR$/parking/templates/contactus.html\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state relative-caret-position=\"225\">\n              <caret line=\"9\" column=\"17\" selection-start-line=\"9\" selection-start-column=\"17\" selection-end-line=\"9\" selection-end-column=\"17\" />\n              <folding>\n                <element signature=\"n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#textarea#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h1#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h4#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#hr#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h4#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h3#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n              </folding>\n            </state>\n          </provider>\n        </entry>\n      </file>\n      <file pinned=\"false\" current-in-tab=\"false\">\n        <entry file=\"file://$PROJECT_DIR$/parking/templates/aboutus.html\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state relative-caret-position=\"200\">\n              <caret line=\"8\" column=\"23\" lean-forward=\"true\" selection-start-line=\"7\" selection-start-column=\"5\" selection-end-line=\"8\" selection-end-column=\"23\" />\n              <folding>\n                <element signature=\"n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#1;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#img#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#img#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#img#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#0;n#div#4;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#1;n#div#4;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#0;n#div#5;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#p#1;n#div#5;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n              </folding>\n            </state>\n          </provider>\n        </entry>\n      </file>\n      <file pinned=\"false\" current-in-tab=\"false\">\n        <entry file=\"file://$PROJECT_DIR$/parking/templates/vehicleentry.html\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state relative-caret-position=\"-1550\">\n              <caret line=\"49\" column=\"28\" lean-forward=\"true\" selection-start-line=\"49\" selection-start-column=\"28\" selection-end-line=\"49\" selection-end-column=\"28\" />\n              <folding>\n                <element signature=\"n#style#0;n#h1#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#input#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#1;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#h2#2;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n                <element signature=\"n#style#0;n#input#1;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n              </folding>\n            </state>\n          </provider>\n        </entry>\n      </file>\n    </leaf>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"FindInProjectRecents\">\n    <findStrings>\n      <find>row</find>\n      <find>text</find>\n      <find>out</find>\n      <find>topbw</find>\n      <find>picture</find>\n      <find>picture`</find>\n    </findStrings>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"IdeDocumentHistory\">\n    <option name=\"CHANGED_PATHS\">\n      <list>\n        <option value=\"$PROJECT_DIR$/inhouse/templates/index.html\" />\n        <option value=\"$PROJECT_DIR$/inhouse/urls.py\" />\n        <option value=\"$PROJECT_DIR$/parking/apps.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/maps.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/signup.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/printentry.html\" />\n        <option value=\"$PROJECT_DIR$/parking/admin.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/complaint.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/home.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/printcomplaint.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/adminpage.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/forgot.html\" />\n        <option value=\"$PROJECT_DIR$/parking/models.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/printcontact.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/searchingveh.html\" />\n        <option value=\"$PROJECT_DIR$/parking/urls.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/printexit.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/printvehicles.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/index.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/entryex.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/vehicleentry.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/fare.html\" />\n        <option value=\"$PROJECT_DIR$/parking/views.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/vehicleexit.html\" />\n        <option value=\"$PROJECT_DIR$/inhouse/settings.py\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/aboutus.html\" />\n        <option value=\"$PROJECT_DIR$/parking/templates/contactus.html\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectFrameBounds\" extendedState=\"7\">\n    <option name=\"x\" value=\"10\" />\n    <option name=\"y\" value=\"20\" />\n    <option name=\"width\" value=\"1346\" />\n    <option name=\"height\" value=\"688\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2c889qiPeSpvb9i3uqdCb5cwDHC\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectView\">\n    <navigator proportions=\"\" version=\"1\">\n      <foldersAlwaysOnTop value=\"true\" />\n    </navigator>\n    <panes>\n      <pane id=\"Scope\" />\n      <pane id=\"ProjectPane\">\n        <subPane>\n          <expand>\n            <path>\n              <item name=\"SecurePark - Copy\" type=\"b2602c69:ProjectViewProjectNode\" />\n              <item name=\"SecurePark - Copy\" type=\"462c0819:PsiDirectoryNode\" />\n            </path>\n            <path>\n              <item name=\"SecurePark - Copy\" type=\"b2602c69:ProjectViewProjectNode\" />\n              <item name=\"SecurePark - Copy\" type=\"462c0819:PsiDirectoryNode\" />\n              <item name=\"inhouse\" type=\"462c0819:PsiDirectoryNode\" />\n            </path>\n            <path>\n              <item name=\"SecurePark - Copy\" type=\"b2602c69:ProjectViewProjectNode\" />\n              <item name=\"SecurePark - Copy\" type=\"462c0819:PsiDirectoryNode\" />\n              <item name=\"parking\" type=\"462c0819:PsiDirectoryNode\" />\n            </path>\n            <path>\n              <item name=\"SecurePark - Copy\" type=\"b2602c69:ProjectViewProjectNode\" />\n              <item name=\"SecurePark - Copy\" type=\"462c0819:PsiDirectoryNode\" />\n              <item name=\"parking\" type=\"462c0819:PsiDirectoryNode\" />\n              <item name=\"templates\" type=\"462c0819:PsiDirectoryNode\" />\n            </path>\n          </expand>\n          <select />\n        </subPane>\n      </pane>\n    </panes>\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"last_opened_file_path\": \"/Users/ashishkumar/PycharmProjects/SecurePark-Parking-Booking/parking\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/parking\" />\n      <recent name=\"$PROJECT_DIR$/parking/templates\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/parking/templates\" />\n      <recent name=\"C:\\Users\\pc\\PycharmProjects\\inhouse\\parking\" />\n      <recent name=\"C:\\Users\\pc\\PycharmProjects\\inhouse\\inhouse\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"SvnConfiguration\">\n    <configuration />\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"94025f6e-11a1-4e46-a82f-2690b2b79fd2\" name=\"Default Changelist\" comment=\"\" />\n      <created>1559804008645</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1559804008645</updated>\n      <workItem from=\"1707481698817\" duration=\"2672000\" />\n      <workItem from=\"1707484428363\" duration=\"3729000\" />\n      <workItem from=\"1707488914591\" duration=\"413000\" />\n      <workItem from=\"1707489384382\" duration=\"2856000\" />\n      <workItem from=\"1707495031459\" duration=\"3358000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"ToolWindowManager\">\n    <frame x=\"-8\" y=\"-8\" width=\"1382\" height=\"744\" extended-state=\"6\" />\n    <editor active=\"true\" />\n    <layout>\n      <window_info active=\"true\" content_ui=\"combo\" id=\"Project\" order=\"0\" visible=\"true\" weight=\"0.17038691\" />\n      <window_info id=\"Structure\" order=\"1\" side_tool=\"true\" weight=\"0.25\" />\n      <window_info id=\"Favorites\" order=\"2\" side_tool=\"true\" />\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\n      <window_info anchor=\"bottom\" id=\"Run\" order=\"2\" />\n      <window_info anchor=\"bottom\" id=\"Debug\" order=\"3\" weight=\"0.4\" />\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\n      <window_info anchor=\"bottom\" id=\"Version Control\" order=\"7\" />\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"8\" weight=\"0.2782324\" />\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"9\" side_tool=\"true\" />\n      <window_info anchor=\"bottom\" id=\"Python Console\" order=\"10\" />\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\n    </layout>\n    <layout-to-restore>\n      <window_info active=\"true\" content_ui=\"combo\" id=\"Project\" order=\"0\" visible=\"true\" weight=\"0.17559524\" />\n      <window_info id=\"Structure\" order=\"1\" side_tool=\"true\" weight=\"0.25\" />\n      <window_info id=\"Favorites\" order=\"2\" side_tool=\"true\" />\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\n      <window_info anchor=\"bottom\" id=\"Run\" order=\"2\" />\n      <window_info anchor=\"bottom\" id=\"Debug\" order=\"3\" weight=\"0.4\" />\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\n      <window_info anchor=\"bottom\" id=\"Version Control\" order=\"7\" />\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"8\" visible=\"true\" weight=\"0.33387887\" />\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"9\" side_tool=\"true\" />\n      <window_info anchor=\"bottom\" id=\"Python Console\" order=\"10\" />\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\n    </layout-to-restore>\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"editorHistoryManager\">\n    <entry file=\"file://$PROJECT_DIR$/inhouse/wsgi.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/maps.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"377\">\n          <caret line=\"168\" selection-start-line=\"168\" selection-end-line=\"168\" />\n          <folding>\n            <element signature=\"n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#4;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/printentry.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"513\">\n          <caret line=\"211\" column=\"7\" lean-forward=\"true\" selection-end-line=\"211\" selection-end-column=\"7\" />\n          <folding>\n            <element signature=\"n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#3;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#4;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#5;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#6;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#7;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/signup.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"-272\">\n          <caret line=\"204\" column=\"10\" selection-start-line=\"204\" selection-start-column=\"10\" selection-end-line=\"204\" selection-end-column=\"10\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/complaint.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"250\">\n          <caret line=\"157\" column=\"6\" lean-forward=\"true\" selection-start-line=\"157\" selection-start-column=\"6\" selection-end-line=\"157\" selection-end-column=\"6\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#3;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#textarea#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#4;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#5;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#textarea#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/forgot.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"50\">\n          <caret line=\"124\" lean-forward=\"true\" selection-start-line=\"124\" selection-end-line=\"124\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#3;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/searchingveh.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"150\">\n          <caret line=\"6\" column=\"6\" lean-forward=\"true\" selection-start-line=\"6\" selection-start-column=\"6\" selection-end-line=\"6\" selection-end-column=\"6\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/printcomplaint.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"4325\">\n          <caret line=\"173\" selection-start-line=\"173\" selection-end-line=\"174\" selection-end-column=\"11\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/printcontact.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"3925\">\n          <caret line=\"157\" selection-start-line=\"157\" selection-end-line=\"157\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/printvehicles.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"2900\">\n          <caret line=\"116\" column=\"1\" selection-start-line=\"116\" selection-start-column=\"1\" selection-end-line=\"116\" selection-end-column=\"1\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/adminpage.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"2000\">\n          <caret line=\"80\" selection-start-line=\"80\" selection-end-line=\"80\" />\n          <folding>\n            <element signature=\"n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#button#0;n#form#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#button#0;n#form#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#button#0;n#form#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/index.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"4950\">\n          <caret line=\"198\" column=\"70\" selection-start-line=\"198\" selection-start-column=\"70\" selection-end-line=\"198\" selection-end-column=\"70\" />\n          <folding>\n            <element signature=\"n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h1#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#1;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#2;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#span#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#a#0;n#span#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#1;n#a#0;n#span#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/printexit.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"4225\">\n          <caret line=\"169\" column=\"1\" selection-start-line=\"169\" selection-start-column=\"1\" selection-end-line=\"169\" selection-end-column=\"1\" />\n          <folding>\n            <element signature=\"n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#3;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/fare.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"150\">\n          <caret line=\"6\" column=\"17\" selection-start-line=\"6\" selection-start-column=\"17\" selection-end-line=\"6\" selection-end-column=\"17\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#0;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#2;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#td#3;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/entryex.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"3425\">\n          <caret line=\"137\" selection-start-line=\"137\" selection-end-line=\"137\" />\n          <folding>\n            <element signature=\"n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/__init__.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/admin.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"175\">\n          <caret line=\"14\" selection-start-line=\"14\" selection-end-line=\"14\" />\n          <folding>\n            <element signature=\"e#0#32#0\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/models.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"1175\">\n          <caret line=\"49\" column=\"24\" selection-start-line=\"49\" selection-start-column=\"24\" selection-end-line=\"49\" selection-end-column=\"24\" />\n          <folding>\n            <element signature=\"e#0#28#0\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/tests.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"75\">\n          <caret line=\"3\" selection-start-line=\"3\" selection-end-line=\"3\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/urls.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"225\">\n          <caret line=\"10\" column=\"33\" selection-start-line=\"10\" selection-start-column=\"33\" selection-end-line=\"10\" selection-end-column=\"33\" />\n          <folding>\n            <element signature=\"e#0#28#0\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/apps.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"75\">\n          <caret line=\"3\" column=\"31\" selection-start-line=\"3\" selection-start-column=\"31\" selection-end-line=\"3\" selection-end-column=\"31\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/home.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"575\">\n          <caret line=\"23\" column=\"11\" lean-forward=\"true\" selection-start-line=\"23\" selection-start-column=\"11\" selection-end-line=\"23\" selection-end-column=\"11\" />\n          <folding>\n            <element signature=\"n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#a#1;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#a#3;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#a#5;n#div#0;n#div#1;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/inhouse/urls.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"363\">\n          <caret line=\"21\" column=\"37\" selection-start-line=\"21\" selection-start-column=\"37\" selection-end-line=\"21\" selection-end-column=\"37\" />\n          <folding>\n            <element signature=\"e#631#663#0\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/inhouse/__init__.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/views.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"725\">\n          <caret line=\"299\" column=\"61\" selection-start-line=\"299\" selection-start-column=\"61\" selection-end-line=\"299\" selection-end-column=\"61\" />\n          <folding>\n            <element signature=\"e#0#18#0\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/vehicleentry.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"-1550\">\n          <caret line=\"49\" column=\"28\" lean-forward=\"true\" selection-start-line=\"49\" selection-start-column=\"28\" selection-end-line=\"49\" selection-end-column=\"28\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#2;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#1;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/inhouse/settings.py\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"1922\">\n          <caret line=\"106\" column=\"23\" lean-forward=\"true\" selection-start-line=\"106\" selection-start-column=\"23\" selection-end-line=\"106\" selection-end-column=\"23\" />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/vehicleexit.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"-1875\">\n          <caret line=\"39\" column=\"13\" selection-start-line=\"39\" selection-start-column=\"13\" selection-end-line=\"39\" selection-end-column=\"13\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#label#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/aboutus.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"200\">\n          <caret line=\"8\" column=\"23\" lean-forward=\"true\" selection-start-line=\"7\" selection-start-column=\"5\" selection-end-line=\"8\" selection-end-column=\"23\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#img#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#1;n#div#3;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#4;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#1;n#div#4;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#0;n#div#5;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#p#1;n#div#5;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/parking/templates/contactus.html\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state relative-caret-position=\"225\">\n          <caret line=\"9\" column=\"17\" selection-start-line=\"9\" selection-start-column=\"17\" selection-end-line=\"9\" selection-end-column=\"17\" />\n          <folding>\n            <element signature=\"n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#input#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#textarea#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h1#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h4#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#hr#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h2#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h4#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n            <element signature=\"n#style#0;n#h3#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top\" expanded=\"true\" />\n          </folding>\n        </state>\n      </provider>\n    </entry>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4ba32ca484ebd737116e2016834207d2f6d0cda7)
++++ b/.idea/workspace.xml	(date 1707501489693)
+@@ -4,9 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="94025f6e-11a1-4e46-a82f-2690b2b79fd2" name="Default Changelist" comment="">
++    <list default="true" id="94025f6e-11a1-4e46-a82f-2690b2b79fd2" name="Default Changelist" comment="first commit">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/parking/templates/adminpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/adminpage.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/parking/templates/printcomplaint.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/printcomplaint.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -251,8 +253,17 @@
+       <workItem from="1707484428363" duration="3729000" />
+       <workItem from="1707488914591" duration="413000" />
+       <workItem from="1707489384382" duration="2856000" />
+-      <workItem from="1707495031459" duration="3358000" />
++      <workItem from="1707495031459" duration="5602000" />
++    </task>
++    <task id="LOCAL-00001" summary="first commit">
++      <option name="closed" value="true" />
++      <created>1707498514230</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1707498514230</updated>
+     </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="ToolWindowManager">
+@@ -299,6 +310,10 @@
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="first commit" />
++    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+   </component>
+   <component name="editorHistoryManager">
+     <entry file="file://$PROJECT_DIR$/inhouse/wsgi.py">

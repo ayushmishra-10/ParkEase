@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .topnav {
+            background-color: #1E90FF;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topnav a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #36b7f9;
+        }
+
+        .topnav a.active {
+            background-color: #0d6efd;
+        }
+
+        .brand-logo {
+            float: left;
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .content {
+            margin-top: 70px;
+            padding: 20px;
+        }
+
+        .complaint-heading {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1E90FF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <div class="brand-logo">Parking Manager</div>
+    <a href="/adminpage/" class="active">Admin View</a>
+</div>
+
+<div class="content">
+    <h1 class="complaint-heading">Registered Complaints</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Name of User</th>
+            <th>Email Address</th>
+            <th>Contact Number</th>
+            <th>Address</th>
+            <th>Complaint Type</th>
+            <th>Message</th>
+            <th>Action</th> <!-- New column for delete button -->
+        </tr>
+        </thead>
+        <tbody>
+        {% if obj %}
+            {% for complaint in obj %}
+                <tr>
+                    <td>{{ complaint.fname }} {{ complaint.mname }} {{ complaint.lname }}</td>
+                    <td>{{ complaint.email }}</td>
+                    <td>{{ complaint.contactno }}</td>
+                    <td>{{ complaint.address }}</td>
+                    <td>{{ complaint.space }}</td>
+                    <td>{{ complaint.message }}</td>
+                    <td>
+                        <form action="{% url 'delete_complaint' complaint.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7">No complaints registered.</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
